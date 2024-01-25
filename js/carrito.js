@@ -2,6 +2,7 @@
 let productosEnCarrito = localStorage.getItem("productos-en-carrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
+// Esta seccion me ayuda a manipular el DOM
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
@@ -69,6 +70,24 @@ function actualizarBotonesEliminar(){
 }
 
 function eliminarDelCarrito(e) {
+    Toastify({
+        text: "Producto eliminado",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+        background: "linear-gradient(to right, #c59695, #393432)",
+        color:"black",
+        borderRadius: "2rem",
+        },
+        offset: {
+            x: "2rem", 
+            y: "2rem" 
+        },
+        onClick: function(){} 
+    }).showToast();
     const idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto => producto.id === idBoton)
     productosEnCarrito.splice(index, 1)
@@ -80,9 +99,23 @@ function eliminarDelCarrito(e) {
 botonVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito() {
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    cargarProductosCarrito();
+    // Esta funcion me permite vaciar el carrito de mi pagina
+    // esta parte del codigo trae una funcion de la libreria sweetalert que alerta al usuario si quiere eliminar los datos del carrito de compras
+    Swal.fire({
+        title: "¿Estas seguro?",
+        icon: "warning",
+        html: `Se van a borrar ${productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0)} productos.`,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `Si`,
+        cancelButtonText: `No`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+        productosEnCarrito.length = 0;
+        localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+        cargarProductosCarrito();
+        }
+    });
 }
 
 function actualizarTotal() {
@@ -93,6 +126,14 @@ function actualizarTotal() {
 botonComprar.addEventListener("click", comprarCarrito);
 
 function comprarCarrito() {
+    // esta parte del codigo trae una funcion de la libreria sweetalert que alerta al usuario cuando realiza la compra
+    Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "¡Tu compra a sido realizada!",
+        showConfirmButton: false,
+        timer: 1500
+    });
     productosEnCarrito.length = 0;
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
     

@@ -1,128 +1,13 @@
-const productos= [
-    // frutas
-    {
-        id: "banana",
-        titulo: "Banana",
-        imagen: "./img/frutas/banana.jpg",
-        categoria: {
-            nombre: "Frutas",
-            id: "frutas"
-        },
-        precio: 500
-    },
-    {
-        id: "cereza",
-        titulo: "Cereza",
-        imagen: "./img/frutas/cereza.jpg",
-        categoria: {
-            nombre: "cereza",
-            id: "frutas"
-        },
-        precio: 800
-    },
-    {
-        id: "manzana",
-        titulo: "Manzana",
-        imagen: "./img/frutas/manzana.jpg",
-        categoria: {
-            nombre: "manzana",
-            id: "frutas"
-        },
-        precio: 700
-    },
-    {
-        id: "peras",
-        titulo: "Peras",
-        imagen: "./img/frutas/peras.jpg",
-        categoria: {
-            nombre: "Peras",
-            id: "frutas"
-        },
-        precio: 900
-    },
-    {
-        id: "naranjas",
-        titulo: "Naranja",
-        imagen: "./img/frutas/naranjas.jpg",
-        categoria: {
-            nombre: "naranja",
-            id: "frutas"
-        },
-        precio: 400
-    },
-    // carnes
-    {
-        id: "carne",
-        titulo: "Carne",
-        imagen: "./img/carnes/carne.jpg",
-        categoria: {
-            nombre: "Carnes",
-            id: "carne"
-        },
-        precio: 1500
-    },
-    {
-        id: "pescado",
-        titulo: "Pescado",
-        imagen: "./img/carnes/pescado.jpg",
-        categoria: {
-            nombre: "pescado",
-            id: "carne"
-        },
-        precio: 2500
-    },
-    {
-        id: "pollo",
-        titulo: "Pollo",
-        imagen: "./img/carnes/pollo.jpg",
-        categoria: {
-            nombre: "pollo",
-            id: "carne"
-        },
-        precio: 1200
-    },
-    {
-        id: "salchicha",
-        titulo: "Salchicha",
-        imagen: "./img/carnes/salchicha.jpg",
-        categoria: {
-            nombre: "salchicha",
-            id: "carne"
-        },
-        precio: 900
-    },
-    // caramelos
-    {
-        id: "caramelo",
-        titulo: "Caramelo Masticable",
-        imagen: "./img/caramelos/candy.jpg",
-        categoria: {
-            nombre: "Golosinas",
-            id: "golosinas"
-        },
-        precio: 500
-    },
-    {
-        id: "oreo",
-        titulo: "Oreos Americana",
-        imagen: "./img/caramelos/oreo.jpg",
-        categoria: {
-            nombre: "oreo",
-            id: "golosinas"
-        },
-        precio: 1500
-    },
-    {
-        id: "chocolate",
-        titulo: "Chocolate con leche",
-        imagen: "./img/caramelos/chocolate.jpg",
-        categoria: {
-            nombre: "chocolate",
-            id: "golosinas"
-        },
-        precio: 1500
-    },
-];
+let productos = [];
+
+// Hago este FETCH para traer todos mis productos de mi archivo "productos.json"
+
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos(productos);
+    })
 
 // Con estas variables manipulo el DOM
 
@@ -153,8 +38,7 @@ const cargarProductos = (productosElegidos) => {
 
     actualizarBotonesAgregar();
     console.log(botonesAgregar)
-}
-cargarProductos(productos);
+};
 
 
 botonesCategorias.forEach(boton => {
@@ -181,7 +65,7 @@ function actualizarBotonesAgregar(){
     botonesAgregar.forEach(boton => {
         boton.addEventListener("click", agregarAlCarrito);
     });
-}
+};
 
 let produtosEnCarrito;
 
@@ -195,6 +79,26 @@ if (productosEnCarritoLS) {
 }
 
 function agregarAlCarrito (e) {
+
+    Toastify({
+        text: "¡Producto agregado!",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+        background: "linear-gradient(to right, #c59695, #393432)",
+        color:"black",
+        borderRadius: "2rem",
+        },
+        offset: {
+            x: "2rem", // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: "2rem" // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+        onClick: function(){} // Callback after click
+    }).showToast();
+
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find (producto => producto.id === idBoton);
 
@@ -206,7 +110,7 @@ function agregarAlCarrito (e) {
         productosEnCarrito.push(productoAgregado);
     }
 
-    actualizarNumerito()
+    actualizarNumerito();
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }

@@ -1,0 +1,122 @@
+[
+    {
+        "id": "banana",
+        "titulo": "Banana",
+        "imagen": "./img/frutas/banana.jpg",
+        "categoria": {
+            "nombre": "Frutas",
+            "id": "frutas"
+        },
+        "precio": 500
+    },
+    {
+        "id": "cereza",
+        "titulo": "Cereza",
+        "imagen": "./img/frutas/cereza.jpg",
+        "categoria": {
+            "nombre": "cereza",
+            "id": "frutas"
+        },
+        "precio": 800
+    },
+    {
+        "id": "manzana",
+        "titulo": "Manzana",
+        "imagen": "./img/frutas/manzana.jpg",
+        "categoria": {
+            "nombre": "manzana",
+            "id": "frutas"
+        },
+        "precio": 700
+    },
+    {
+        "id": "peras",
+        "titulo": "Peras",
+        "imagen": "./img/frutas/peras.jpg",
+        "categoria": {
+            "nombre": "Peras",
+            "id": "frutas"
+        },
+        "precio": 900
+    },
+    {
+        "id": "naranjas",
+        "titulo": "Naranja",
+        "imagen": "./img/frutas/naranjas.jpg",
+        "categoria": {
+            "nombre": "naranja",
+            "id": "frutas"
+        },
+        "precio": 400
+    },
+    {
+        "id": "carne",
+        "titulo": "Carne",
+        "imagen": "./img/carnes/carne.jpg",
+        "categoria": {
+            "nombre": "Carnes",
+            "id": "carne"
+        },
+        "precio": 1500
+    },
+    {
+        "id": "pescado",
+        "titulo": "Pescado",
+        "imagen": "./img/carnes/pescado.jpg",
+        "categoria": {
+            "nombre": "pescado",
+            "id": "carne"
+        },
+        "precio": 2500
+    },
+    {
+        "id": "pollo",
+        "titulo": "Pollo",
+        "imagen": "./img/carnes/pollo.jpg",
+        "categoria": {
+            "nombre": "pollo",
+            "id": "carne"
+        },
+        "precio": 1200
+    },
+    {
+        "id": "salchicha",
+        "titulo": "Salchicha",
+        "imagen": "./img/carnes/salchicha.jpg",
+        "categoria": {
+            "nombre": "salchicha",
+            "id": "carne"
+        },
+        "precio": 900
+    },
+    {
+        "id": "caramelo",
+        "titulo": "Caramelo Masticable",
+        "imagen": "./img/caramelos/candy.jpg",
+        "categoria": {
+            "nombre": "Golosinas",
+            "id": "golosinas"
+        },
+        "precio": 500
+    },
+    {
+        "id": "oreo",
+        "titulo": "Oreos Americana",
+        "imagen": "./img/caramelos/oreo.jpg",
+        "categoria": {
+            "nombre": "oreo",
+            "id": "golosinas"
+        },
+        "precio": 1500
+    },
+    {
+        "id": "chocolate",
+        "titulo": "Chocolate con leche",
+        "imagen": "./img/caramelos/chocolate.jpg",
+        "categoria": {
+            "nombre": "chocolate",
+            "id": "golosinas"
+        },
+        "precio": 1500
+    }
+]
